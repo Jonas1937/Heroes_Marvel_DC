@@ -20,7 +20,7 @@ public class HeroesService {
     public Flux<Heroes> findAll(){
         return Flux.fromIterable(heroesRepository.findAll());
     }
-    public Mono<Heroes> findHeroById(Long id){
+    public Mono<Heroes> findHeroById(String id){
         return Mono.justOrEmpty(heroesRepository.findById(id));
     }
 
@@ -28,7 +28,7 @@ public class HeroesService {
         return Mono.justOrEmpty(heroesRepository.save(heroes));
     }
 
-    public void deleteHeroById(Long id){
+    public void deleteHeroById(String id){
        heroesRepository.deleteById(id);
     }
     

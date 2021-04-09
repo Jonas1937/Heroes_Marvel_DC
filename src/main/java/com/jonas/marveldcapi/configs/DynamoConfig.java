@@ -12,6 +12,7 @@ import org.springframework.util.StringUtils;
 
 @Configuration
 @EnableDynamoDBRepositories
+@Deprecated
 public class DynamoConfig {
     
     @Value("${amazon.dynamodb.endpoint}")

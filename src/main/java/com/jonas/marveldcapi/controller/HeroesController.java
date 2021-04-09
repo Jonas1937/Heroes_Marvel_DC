@@ -41,7 +41,7 @@ public class HeroesController {
     }
 
     @GetMapping(HEROES_ENDPOINT_LOCAL+"/{id}")
-    public Mono<ResponseEntity<Heroes>> findHeroById(@PathVariable Long id){
+    public Mono<ResponseEntity<Heroes>> findHeroById(@PathVariable String id){
         log.info("requesting the heroe of id" + id);
         return heroesService.findHeroById(id)
         .map((item) -> new ResponseEntity<>(item,HttpStatus.OK))
@@ -58,7 +58,7 @@ public class HeroesController {
 
     @DeleteMapping(HEROES_ENDPOINT_LOCAL+"/{id}")
     @ResponseStatus(HttpStatus.CONTINUE)
-    public Mono<HttpStatus> deleteByID(@PathVariable long id){
+    public Mono<HttpStatus> deleteByID(@PathVariable String id){
         heroesService.deleteHeroById(id);
         log.info("Deleted hero by id" + id); 
         return Mono.just(HttpStatus.CONTINUE);
